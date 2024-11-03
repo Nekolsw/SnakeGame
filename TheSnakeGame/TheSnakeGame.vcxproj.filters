@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Sources\GameData">
+      <UniqueIdentifier>{cd98255c-0f21-48a8-9e33-c0755ec5d711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\ParentClasses">
+      <UniqueIdentifier>{578ae943-1e87-4793-868c-1db7f29ee215}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\GameObject">
+      <UniqueIdentifier>{e50d4f19-7e4d-4f23-bd84-7e669290411d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Interface">
+      <UniqueIdentifier>{12acb052-26b8-4afc-a30d-6e532d42f1bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Math">
+      <UniqueIdentifier>{b82a8830-4259-4e3e-b8ce-d9cb98cd0b7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\GameMain">
+      <UniqueIdentifier>{b0218501-a3e6-4f13-a581-8b9e91111c7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Interface\UIManager">
+      <UniqueIdentifier>{8bb1e494-3b82-4b56-ada8-1606adb1286f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Interface\UIComponent">
+      <UniqueIdentifier>{74526153-ce01-4230-9d0b-c8aece52cb6b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Resources.cpp">
+      <Filter>Sources\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="Apple.cpp">
+      <Filter>Sources\ParentClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSnake.cpp">
+      <Filter>Sources\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayingField.cpp">
+      <Filter>Sources\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="RedApple.cpp">
+      <Filter>Sources\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMath.cpp">
+      <Filter>Sources\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="UIMath.cpp">
+      <Filter>Sources\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>Sources\Interface\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Sources\GameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMain.cpp">
+      <Filter>Sources\GameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="UIConstructor.cpp">
+      <Filter>Sources\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="UIGameModes.cpp">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="UIGameOver.cpp">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="UIMainMenu.cpp">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="UIScore.cpp">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="UISettings.cpp">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="UITableRecord.cpp">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Constants.h">
+      <Filter>Sources\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources.h">
+      <Filter>Sources\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="Apple.h">
+      <Filter>Sources\ParentClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Sources\ParentClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSnake.h">
+      <Filter>Sources\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayingField.h">
+      <Filter>Sources\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="RedApple.h">
+      <Filter>Sources\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSettings.h">
+      <Filter>Sources\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMath.h">
+      <Filter>Sources\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="UIMath.h">
+      <Filter>Sources\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>Sources\Interface\UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Sources\GameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="UIConstructor.h">
+      <Filter>Sources\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="UIGameModes.h">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="UIGameOver.h">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="UIMainMenu.h">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="UIScore.h">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="UISettings.h">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="UITableRecord.h">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
