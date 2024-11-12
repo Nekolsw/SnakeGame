@@ -5,7 +5,7 @@
 #include "PlayingField.h"
 #include "PlayerSnake.h"
 #include "RedApple.h"
-#include "GameSettings.h"
+#include "Obstacle.h"
 #include "UIManager.h"
 
 namespace SnakeGame 
@@ -13,18 +13,12 @@ namespace SnakeGame
 	class Game
 	{
 
-		enum GameState
-		{
-			Dead = 0,
-			Alive,
-			Pause
-		};
-
 		struct GameStruct
 		{
-			GameSettings gameSettings;
-			PlayingField playingFiled;
+			PlayingField playingFiled; 
+			sf::Sound soundGame;
 			RedApple redApple;
+			Obstacle obstacle;
 			PlayingField::Field field;
 			GameResources resources;
 			PlayerSnake snakeClass;
@@ -33,8 +27,6 @@ namespace SnakeGame
 			float timeSinceGameStart;
 			bool isPlayerNameEnter = false;
 			sf::Music backgroundMusic;
-			sf::String playerName = "XYZ";
-			sf::Text enterNameText;
 		};
 
 		enum class MyEnumClass
@@ -47,10 +39,12 @@ namespace SnakeGame
 		GameStruct gameStruct;
 		GameSettings gameSettings;
 		UIManager& GetUIManager();
-
-		void EnterPlayerName(sf::Event event, sf::RenderWindow& window);
+		void SerializeGame();
+		void Playback(sf::SoundBuffer& buffer);
 		void RunApplication(GameStruct& gameStruct);
-		void UpdateGame(GameStruct& gameStruct, float deltaTime, sf::RenderWindow& window, sf::Event& event);
+		void RestartGame(GameStruct& gameStruct);
+		void UpdateGame(GameStruct& gameStruct, float deltaTime, sf::RenderWindow& window);
+		void UpdateEvent(sf::Event& event, sf::Window& window);
 		void DrawGame(GameStruct& gameStruct, sf::RenderWindow& window);
 
 

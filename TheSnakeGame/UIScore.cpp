@@ -5,7 +5,7 @@ namespace SnakeGame
 	void UIScore::InitializingScore(sf::Font& font)
 	{
 
-		SetTextScreen(scoreUI, "Score: 0", TEXT_SCORE_SIZE, sf::Color::Cyan, font, { 10.f, 10.f }, { 0, 0 });
+		SetTextScreen(scoreUI, "Score: 0", TEXT_SCORE_SIZE, sf::Color::Cyan, font, { 1000.f, 10.f }, { 0, 0 });
 	}
 	void UIScore::UpdateScore(int& numberScore)
 	{

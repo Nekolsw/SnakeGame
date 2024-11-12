@@ -4,9 +4,11 @@
 namespace SnakeGame 
 {
 	const std::string RESOURCES_PATH = "Resources/\\";
+	const std::string RECORDS_TABLE_NAME = "Table record";
 	const int SCREEN_WIDTH = 1280;
 	const int SCREEN_HEIGHT = 720;
 	const int APPLE_SIZE = 50;
+	const int OBSTACLE_SIZE = 80;
 	const int SNAKE_SIZE = 80;
 	const int TEXT_SCORE_SIZE = 46;
 	const int FIELD_OFFSET_WIDTH = 40;
@@ -19,6 +21,6 @@ namespace SnakeGame
 
 	//Calculating the number of cells in the field
 	const int SIZE_CELL = 80;
-	const int CELL_FOR_WIDHT = GAME_FIELD_WIDTH / SIZE_CELL;
+	const int CELL_FOR_WIDTH = GAME_FIELD_WIDTH / SIZE_CELL;
 	const int CELL_FOR_HEIGHT = GAME_FIELD_HEIGHT / SIZE_CELL;
 }

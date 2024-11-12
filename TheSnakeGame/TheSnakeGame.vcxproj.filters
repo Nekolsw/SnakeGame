@@ -29,6 +29,9 @@
     <Filter Include="Sources\Interface\UIComponent">
       <UniqueIdentifier>{74526153-ce01-4230-9d0b-c8aece52cb6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Interface\UIConstructor">
+      <UniqueIdentifier>{c3047ea2-2226-47b2-a2b8-e75e986a3d1a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Resources.cpp">
@@ -61,13 +64,7 @@
     <ClCompile Include="GameMain.cpp">
       <Filter>Sources\GameMain</Filter>
     </ClCompile>
-    <ClCompile Include="UIConstructor.cpp">
-      <Filter>Sources\Interface</Filter>
-    </ClCompile>
     <ClCompile Include="UIGameModes.cpp">
-      <Filter>Sources\Interface\UIComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="UIGameOver.cpp">
       <Filter>Sources\Interface\UIComponent</Filter>
     </ClCompile>
     <ClCompile Include="UIMainMenu.cpp">
@@ -81,6 +78,21 @@
     </ClCompile>
     <ClCompile Include="UITableRecord.cpp">
       <Filter>Sources\Interface\UIComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="UIDifficultyLevel.cpp">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="UIEnterName.cpp">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="UIPopUpEnterName.cpp">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="UIConstructor.cpp">
+      <Filter>Sources\Interface\UIConstructor</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>Sources\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -120,13 +132,7 @@
     <ClInclude Include="Game.h">
       <Filter>Sources\GameMain</Filter>
     </ClInclude>
-    <ClInclude Include="UIConstructor.h">
-      <Filter>Sources\Interface</Filter>
-    </ClInclude>
     <ClInclude Include="UIGameModes.h">
-      <Filter>Sources\Interface\UIComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="UIGameOver.h">
       <Filter>Sources\Interface\UIComponent</Filter>
     </ClInclude>
     <ClInclude Include="UIMainMenu.h">
@@ -140,6 +146,21 @@
     </ClInclude>
     <ClInclude Include="UITableRecord.h">
       <Filter>Sources\Interface\UIComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="UIDifficultyLevel.h">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="UIEnterName.h">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="UIPopUpEnterName.h">
+      <Filter>Sources\Interface\UIComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="UIConstructor.h">
+      <Filter>Sources\Interface\UIConstructor</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle.h">
+      <Filter>Sources\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

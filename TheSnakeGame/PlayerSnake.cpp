@@ -25,11 +25,29 @@ namespace SnakeGame {
 		texturePartSnake.turnTexture = gameTurnTexture;
 
 		//Setting the initial values for the snake, the snake spawn in the center of the screen.
-		InitializedPartSnake(partSnakeHead, texturePartSnake.headTexture, { (int)CELL_FOR_WIDHT / 2, (int)CELL_FOR_HEIGHT / 2 });
+		InitializedPartSnake(partSnakeHead, texturePartSnake.headTexture, { (int)CELL_FOR_WIDTH / 2, (int)CELL_FOR_HEIGHT / 2 });
 
-		InitializedPartSnake(partSnakeBody, texturePartSnake.bodyTexture, { (int)CELL_FOR_WIDHT / 2 + 1, (int)CELL_FOR_HEIGHT / 2 });
+		InitializedPartSnake(partSnakeBody, texturePartSnake.bodyTexture, { (int)CELL_FOR_WIDTH / 2 + 1, (int)CELL_FOR_HEIGHT / 2 });
 
-		InitializedPartSnake(partSnakeTail, texturePartSnake.tailTexture, { (int)CELL_FOR_WIDHT / 2 + 2, (int)CELL_FOR_HEIGHT / 2 });
+		InitializedPartSnake(partSnakeTail, texturePartSnake.tailTexture, { (int)CELL_FOR_WIDTH / 2 + 2, (int)CELL_FOR_HEIGHT / 2 });
+
+		//Adding snake parts to the list that contains the entire body
+		partsSnake.push_back(partSnakeHead);
+		partsSnake.push_back(partSnakeBody);
+		partsSnake.push_back(partSnakeTail);
+	}
+
+	void PlayerSnake::ReloadSnake(std::list <PartSnake>& partsSnake)
+	{
+		partsSnake.clear();
+		PartSnake partSnakeHead, partSnakeBody, partSnakeTail;
+
+		//Setting the initial values for the snake, the snake spawn in the center of the screen.
+		InitializedPartSnake(partSnakeHead, texturePartSnake.headTexture, { (int)CELL_FOR_WIDTH / 2, (int)CELL_FOR_HEIGHT / 2 });
+
+		InitializedPartSnake(partSnakeBody, texturePartSnake.bodyTexture, { (int)CELL_FOR_WIDTH / 2 + 1, (int)CELL_FOR_HEIGHT / 2 });
+
+		InitializedPartSnake(partSnakeTail, texturePartSnake.tailTexture, { (int)CELL_FOR_WIDTH / 2 + 2, (int)CELL_FOR_HEIGHT / 2 });
 
 		//Adding snake parts to the list that contains the entire body
 		partsSnake.push_back(partSnakeHead);

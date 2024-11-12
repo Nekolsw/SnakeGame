@@ -3,8 +3,16 @@ namespace SnakeGame
 {
 	struct GameSettings
 	{
-		float snakeSpeed = 2.f;
-		bool isSoundEffectOn = true;
-		bool isMusicOn = true;
+		bool isPlayMusic = true, isPlaySound = true;
+		enum class DifficultyGame
+		{
+			Easy = 1,
+			Normal,
+			Hard,
+			VeryHard,
+			Hell
+		};
+
+		DifficultyGame difficultyGame = DifficultyGame::Easy;
 	};
 }

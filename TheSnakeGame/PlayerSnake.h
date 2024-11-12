@@ -36,7 +36,7 @@ namespace SnakeGame
 		{
 			sf::Texture bodyTexture;
 			sf::Sprite spriteBody;
-			PositionField positionSnake = { (int)CELL_FOR_WIDHT / 2, (int)CELL_FOR_HEIGHT / 2 };
+			PositionField positionSnake = { (int)CELL_FOR_WIDTH / 2, (int)CELL_FOR_HEIGHT / 2 };
 			SnakeDirection snakePartDirection = SnakeDirection::Left;
 			SizePartSnake sizePartSnake;
 		};
@@ -44,6 +44,8 @@ namespace SnakeGame
 		TexturePartSnake texturePartSnake;
 
 		void InitializedSnake(std::list <PartSnake>& partsSnake, sf::Texture& gameHeadTexture, sf::Texture& gameBodyTexture, sf::Texture& gameTailTexture, sf::Texture& gameTurnTexture);
+
+		void ReloadSnake(std::list<PartSnake>& partsSnake);
 
 		void UpdateSnakeDirection(std::list <PartSnake>& headSnake, float& deltaTime, float snakeSpeed);
 

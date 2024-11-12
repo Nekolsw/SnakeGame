@@ -28,18 +28,15 @@ int main()
 		lastTime = currentTime;
 
 		sf::Event event;
-	
+
 		while (window.pollEvent(event))
 		{
-			game.EnterPlayerName(event, window);
-			
 			if (event.type == sf::Event::Closed)
 				window.close();
+			game.UpdateEvent(event, window);
+
 		}
-		if (game.gameStruct.isPlayerNameEnter) 
-		{
-			game.UpdateGame(game.gameStruct, deltaTime, window, event);
-		}
+		game.UpdateGame(game.gameStruct, deltaTime, window);
 		window.clear();
 		game.DrawGame(game.gameStruct, window);
 		window.display();

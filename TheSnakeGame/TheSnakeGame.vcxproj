@@ -159,6 +159,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Apple.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="UIDifficultyLevel.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="GameMath.cpp" />
@@ -167,17 +169,20 @@
     <ClCompile Include="RedApple.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="UIConstructor.cpp" />
+    <ClCompile Include="UIEnterName.cpp" />
     <ClCompile Include="UIGameModes.cpp" />
-    <ClCompile Include="UIGameOver.cpp" />
     <ClCompile Include="UIMainMenu.cpp" />
     <ClCompile Include="UIManager.cpp" />
     <ClCompile Include="UIMath.cpp" />
+    <ClCompile Include="UIPopUpEnterName.cpp" />
     <ClCompile Include="UIScore.cpp" />
     <ClCompile Include="UISettings.cpp" />
     <ClCompile Include="UITableRecord.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Apple.h" />
+    <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="UIDifficultyLevel.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GameObject.h" />
@@ -188,11 +193,12 @@
     <ClInclude Include="RedApple.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="UIConstructor.h" />
+    <ClInclude Include="UIEnterName.h" />
     <ClInclude Include="UIGameModes.h" />
-    <ClInclude Include="UIGameOver.h" />
     <ClInclude Include="UIMainMenu.h" />
     <ClInclude Include="UIManager.h" />
     <ClInclude Include="UIMath.h" />
+    <ClInclude Include="UIPopUpEnterName.h" />
     <ClInclude Include="UIScore.h" />
     <ClInclude Include="UISettings.h" />
     <ClInclude Include="UITableRecord.h" />

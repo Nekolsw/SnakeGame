@@ -19,6 +19,20 @@ namespace SnakeGame
 		textScreen.setPosition({ gameTextPosition.x, gameTextPosition.y });
 	}
 
+	void SetRectangleShape(sf::RectangleShape& rectangle, UIPosition2D size, sf::Color colorBackground, UIPosition2D origin, UIPosition2D position, sf::Color colorOutliner, float outlinerThickness)
+	{
+		rectangle.setSize({ size.x, size.y });
+		rectangle.setFillColor(colorBackground);
+		rectangle.setOrigin({ origin.x, origin.y });
+		rectangle.setPosition({ position.x, position.y });
+		rectangle.setOutlineThickness(outlinerThickness);
+		rectangle.setOutlineColor(colorOutliner);
+	}
+	void UpdateRectangleShape(sf::RectangleShape& rectangle, UIPosition2D position)
+	{
+		rectangle.setPosition({ position.x, position.y });
+	}
+
 	void UpdateTextScreen(sf::Text& textScreen, std::string text)
 	{
 		textScreen.setString(text);

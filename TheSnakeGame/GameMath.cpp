@@ -27,6 +27,6 @@ namespace SnakeGame
 
 	sf::Vector2f ConversionPositionCellsInScreenPosition (PositionField positionField) 
 	{
-		return { float(positionField.cellWidth * CELL_FOR_WIDHT + FIELD_OFFSET_WIDTH), float(positionField.cellHeight * CELL_FOR_HEIGHT + FIELD_OFFSET_HEIGHT) };
+		return { float(positionField.cellWidth * CELL_FOR_WIDTH + FIELD_OFFSET_WIDTH), float(positionField.cellHeight * CELL_FOR_HEIGHT + FIELD_OFFSET_HEIGHT) };
 	}
 }
