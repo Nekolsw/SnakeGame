@@ -11,7 +11,6 @@ namespace SnakeGame
 		result.cellHeight = rand() & (positionField.cellHeight - 1);
 		return result;
 	}
-
 	void SetSpriteSize(sf::Sprite& sprite, float desiredWidth, float desiredHeight)
 	{
 		sf::FloatRect spriteRect = sprite.getLocalBounds();

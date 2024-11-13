@@ -170,7 +170,7 @@ namespace SnakeGame {
 		partsSnake.push_back(partSnakeBody);
 	}
 
-	void PlayerSnake::UpdateSnakeDirection(std::list <PartSnake>& headSnake, float &deltaTime, float snakeSpeed)
+	void PlayerSnake::UpdateSnakeDirection(std::list <PartSnake>& headSnake, float &deltaTime, float snakeSpeed, int& numberMoveSnake, GameSettings& gameSettings)
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) && headSnake.front().snakePartDirection != SnakeDirection::Left && isDirectionSelect == false)
 		{
@@ -203,6 +203,10 @@ namespace SnakeGame {
 		}
 		else
 		{
+			if (gameSettings.gameMode.isMoveObstacle) 
+			{
+				++numberMoveSnake;
+			}
 			switch (headSnake.front().snakePartDirection)
 			{
 				case SnakeDirection::Up:

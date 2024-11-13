@@ -51,7 +51,7 @@ namespace SnakeGame
 					}
 					else 
 					{
-						SetRectangleShape(checkSound, { 40.f, 40.f }, sf::Color(25, 25, 25, 255), { 0.5f, 0.5f }, { 740.f, 235.f }, sf::Color::Cyan, 1.f);
+						SetRectangleShape(checkSound, { 40.f, 40.f }, sf::Color(25, 25, 25, 255), { 0.5f, 0.5f }, { 740.f, 235.f }, sf::Color::Cyan, 2.f);
 					}
 					break;
 				}
@@ -64,7 +64,7 @@ namespace SnakeGame
 					}
 					else
 					{
-						SetRectangleShape(checkMusic, { 40.f, 40.f }, sf::Color(25, 25, 25, 255), { 0.5f, 0.5f }, { 740.f, 285.f }, sf::Color::Cyan, 1.f);
+						SetRectangleShape(checkMusic, { 40.f, 40.f }, sf::Color(25, 25, 25, 255), { 0.5f, 0.5f }, { 740.f, 285.f }, sf::Color::Cyan, 2.f);
 					}
 					break;
 				}

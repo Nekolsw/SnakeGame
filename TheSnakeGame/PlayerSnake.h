@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "Constants.h"
 #include "GameMath.h"
+#include "GameSettings.h"
 namespace SnakeGame
 {
 	class PlayerSnake
@@ -47,7 +48,7 @@ namespace SnakeGame
 
 		void ReloadSnake(std::list<PartSnake>& partsSnake);
 
-		void UpdateSnakeDirection(std::list <PartSnake>& headSnake, float& deltaTime, float snakeSpeed);
+		void UpdateSnakeDirection(std::list <PartSnake>& headSnake, float& deltaTime, float snakeSpeed, int& numberMoveSnake, GameSettings& gameSettings);
 
 		void AddPartSnake(std::list <PartSnake>& partsSnake);
 

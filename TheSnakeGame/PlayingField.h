@@ -6,6 +6,7 @@
 #include "Apple.h"
 #include "Obstacle.h"
 #include "PlayerSnake.h"
+#include "GameSettings.h"
 
 namespace SnakeGame
 {
@@ -16,6 +17,7 @@ namespace SnakeGame
 		{
 			Apple = 1,
 			Obstacle,
+			ObstacleBorder,
 			HeadSnake,
 			PartSnake,
 			Null
@@ -53,7 +55,9 @@ namespace SnakeGame
 		void InitializingField(sf::Texture gameTextureCell, Field& field);
 		void ReloadField(Field& field);
 		void AddAppleForField(Apple& apple, Field& field);
-		void AddObstacleForField(Obstacle obstacle, Field& field);
+		void AddRandomObstacleForField(Obstacle& obstacle, Field& field, GameSettings& gameSettings);
+		void AddBorderObstacleForField(Obstacle& obstacle, Field& field);
+		void DeleteObstacleForField(Field& field);
 		void DeleteAppleForField(PositionField positionField, Field& field);
 		void UpdateSnakeBodyForField(std::list<PlayerSnake::PartSnake>& partSnake, Field& field);
 		void DeleteSnakeBodyForField(std::list<PlayerSnake::PartSnake>& partSnake, Field& field);

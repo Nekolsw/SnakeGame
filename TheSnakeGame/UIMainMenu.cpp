@@ -23,6 +23,7 @@ namespace SnakeGame
 		SetRectangleShape(menuBackground, { 400.f, 500.f }, sf::Color(25, 25, 25, 235), { 0.5f, 0.5f }, { 443.f, 160.f }, sf::Color::Cyan, 1.f);
 		uiMenuItem.uiSettings.InitializedSettings(font);
 		uiMenuItem.uiDifficultyLevel.InitializedSettings(font);
+		uiMenuItem.uiGameModes.InitializedMainMenu(font);
 	}
 	void UIMainMenu::Playback(sf::SoundBuffer& buffer, GameSettings& gameSettings)
 	{
@@ -32,7 +33,7 @@ namespace SnakeGame
 			soundGame.play();
 		}
 	}
-	bool UIMainMenu::ChoiceItemMenu(sf::Event& event, sf::Window& window, GameSettings& gameSettings, GameResources& gameResouces)
+	bool UIMainMenu::ChoiceItemMenu(sf::Event& event, sf::Window& window, GameSettings& gameSettings, GameResources& gameResources)
 	{
 		if (event.type == sf::Event::KeyPressed && !isMenuItemSelected)
 		{
@@ -41,7 +42,7 @@ namespace SnakeGame
 			case sf::Keyboard::W:
 				if (beginMenuItem > MenuItems::StartPLaying)
 				{
-					Playback(gameResouces.menuHover, gameSettings);
+					Playback(gameResources.menuHover, gameSettings);
 					--accountMenuItems;
 					beginMenuItem = static_cast<MenuItems>(accountMenuItems);
 					textMenuIter->setColor(sf::Color::Cyan);
@@ -53,7 +54,7 @@ namespace SnakeGame
 			case sf::Keyboard::S:
 				if (beginMenuItem < MenuItems::Exit)
 				{
-					Playback(gameResouces.menuHover, gameSettings);
+					Playback(gameResources.menuHover, gameSettings);
 					++accountMenuItems;
 					beginMenuItem = static_cast<MenuItems>(accountMenuItems);
 					textMenuIter->setColor(sf::Color::Cyan);
@@ -62,7 +63,7 @@ namespace SnakeGame
 				}
 				break;
 			case sf::Keyboard::Enter:
-				Playback(gameResouces.menuEnter, gameSettings);
+				Playback(gameResources.menuEnter, gameSettings);
 				isMenuItemSelected = true;
 			default:
 				break;
@@ -77,16 +78,16 @@ namespace SnakeGame
 				return true;
 				break;
 			case SnakeGame::UIMainMenu::DifficultyLevel:
-				uiMenuItem.uiDifficultyLevel.ChoiceDifficulty(event, gameSettings, gameResouces);
+				uiMenuItem.uiDifficultyLevel.ChoiceDifficulty(event, gameSettings, gameResources);
 				break;
 			case SnakeGame::UIMainMenu::TableScore:
 
 				break;
 			case SnakeGame::UIMainMenu::GameModes:
-
+				uiMenuItem.uiGameModes.ChoiceGameMode(event, gameSettings, gameResources);
 				break;
 			case SnakeGame::UIMainMenu::Settings:
-				uiMenuItem.uiSettings.ChoiceSettings(event, gameSettings, gameResouces);
+				uiMenuItem.uiSettings.ChoiceSettings(event, gameSettings, gameResources);
 				break;
 			case SnakeGame::UIMainMenu::Exit:
 				window.close();
@@ -128,7 +129,7 @@ namespace SnakeGame
 				uiTableRecord.DrawTableRecord(window, font, 5);
 				break;
 			case SnakeGame::UIMainMenu::GameModes:
-
+				uiMenuItem.uiGameModes.DrawGameMode(window);
 				break;
 			case SnakeGame::UIMainMenu::Settings:
 				uiMenuItem.uiSettings.DrawSettings(window);

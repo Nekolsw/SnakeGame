@@ -13,6 +13,8 @@ namespace SnakeGame
 	const int TEXT_SCORE_SIZE = 46;
 	const int FIELD_OFFSET_WIDTH = 40;
 	const int FIELD_OFFSET_HEIGHT = 120;
+	const int NUMBER_RANDOM_OBSTACLE = 3;
+	const int NUMBER_MOVES_BEFORE_CHANGING_OBSTACLE = 6;
 	const float PAUSE_LENGHT_MOVEMENT = 1.f;
 	const float PAUSE_LENGHT_START = 2.f;
 	const int MAX_EFFECT_APPLE = 3;

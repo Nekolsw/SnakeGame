@@ -24,6 +24,7 @@ namespace SnakeGame
 			PlayerSnake snakeClass;
 			std::list <PlayerSnake::PartSnake> playerSnake;
 			sf::RectangleShape background;
+			int numberMoveSnake = 0;
 			float timeSinceGameStart;
 			bool isPlayerNameEnter = false;
 			sf::Music backgroundMusic;
@@ -37,7 +38,6 @@ namespace SnakeGame
 		void AppleInitialization(GameStruct& gameStruct);
 	public:
 		GameStruct gameStruct;
-		GameSettings gameSettings;
 		UIManager& GetUIManager();
 		void SerializeGame();
 		void Playback(sf::SoundBuffer& buffer);

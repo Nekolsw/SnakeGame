@@ -70,34 +70,65 @@ namespace SnakeGame
 		
 	}
 
-	void PlayingField::AddObstacleForField(Obstacle obstacle, Field& field)
+	void PlayingField::AddRandomObstacleForField(Obstacle& obstacle, Field& field, GameSettings& gameSettings)
+	{
+		PositionField positionObstacle;
+		int i = 0;
+		while (i != NUMBER_RANDOM_OBSTACLE + static_cast<int>(gameSettings.difficultyGame)) 
+		{
+			do
+			{
+				positionObstacle = GetRandomCellInGameScreen({ CELL_FOR_WIDTH, CELL_FOR_HEIGHT });
+			} while (field.cellField[positionObstacle.cellWidth][positionObstacle.cellHeight].itemType != ItemType::Null);
+
+			field.cellField[positionObstacle.cellWidth][positionObstacle.cellHeight].obstacle = obstacle;
+			field.cellField[positionObstacle.cellWidth][positionObstacle.cellHeight].obstacle.Spawn(field.cellField[positionObstacle.cellWidth][positionObstacle.cellHeight].cellPosition);
+			field.cellField[positionObstacle.cellWidth][positionObstacle.cellHeight].itemType = ItemType::Obstacle;
+			++i;
+		}
+
+	}
+
+	void PlayingField::AddBorderObstacleForField(Obstacle& obstacle, Field& field)
 	{
 			for (int j = 0; j < CELL_FOR_HEIGHT; ++j)
 			{
 				field.cellField[0][j].obstacle = obstacle;
 				field.cellField[0][j].obstacle.Spawn(field.cellField[0][j].cellPosition);
-				field.cellField[0][j].itemType = ItemType::Obstacle;
+				field.cellField[0][j].itemType = ItemType::ObstacleBorder;
 			}
 			for (int j = 0; j < CELL_FOR_WIDTH; ++j)
 			{
 				field.cellField[j][0].obstacle = obstacle;
 				field.cellField[j][0].obstacle.Spawn(field.cellField[j][0].cellPosition);
-				field.cellField[j][0].itemType = ItemType::Obstacle;
+				field.cellField[j][0].itemType = ItemType::ObstacleBorder;
 			}	
 			for (int j = 0; j < CELL_FOR_HEIGHT; ++j)
 			{
 				field.cellField[14][j].obstacle = obstacle;
 				field.cellField[14][j].obstacle.Spawn(field.cellField[14][j].cellPosition);
-				field.cellField[14][j].itemType = ItemType::Obstacle;
+				field.cellField[14][j].itemType = ItemType::ObstacleBorder;
 			}
 			for (int j = 0; j < CELL_FOR_WIDTH; ++j)
 			{
 				field.cellField[j][7].obstacle = obstacle;
 				field.cellField[j][7].obstacle.Spawn(field.cellField[j][7].cellPosition);
-				field.cellField[j][7].itemType = ItemType::Obstacle;
+				field.cellField[j][7].itemType = ItemType::ObstacleBorder;
 			}
 	}
+	
 
+	void PlayingField::DeleteObstacleForField(Field& field)
+	{
+		for (int i = 0; i < CELL_FOR_WIDTH; ++i)
+		{
+			for (int j = 0; j < CELL_FOR_HEIGHT; ++j)
+			{
+				if (field.cellField[i][j].itemType == ItemType::Obstacle)
+					field.cellField[i][j].itemType = ItemType::Null;
+			}
+		}
+	}
 	void PlayingField::DeleteAppleForField(PositionField positionField, Field& field)
 	{
 		field.cellField[positionField.cellWidth][positionField.cellHeight].apple = nullptr;
@@ -156,7 +187,7 @@ namespace SnakeGame
 		{
 			for (int j = 0; j < CELL_FOR_HEIGHT; ++j)
 			{
-				if (field.cellField[i][j].itemType == ItemType::Obstacle)
+				if (field.cellField[i][j].itemType == ItemType::ObstacleBorder || field.cellField[i][j].itemType == ItemType::Obstacle)
 				{
 					field.cellField[i][j].obstacle.Draw(window);
 				}

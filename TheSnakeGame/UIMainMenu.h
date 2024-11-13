@@ -1,10 +1,11 @@
 #pragma once
+#include <list>
+#include <iterator>
 #include "UIConstructor.h"
 #include "UISettings.h"
 #include "UITableRecord.h"
+#include "UIGameModes.h"
 #include "UIDifficultyLevel.h"
-#include <list>
-#include <iterator>
 namespace SnakeGame
 {
 	class UIMainMenu
@@ -13,6 +14,7 @@ namespace SnakeGame
 		{
 			UISettings uiSettings;
 			UIDifficultyLevel uiDifficultyLevel;
+			UIGameModes uiGameModes;
 		};
 		UIMenuItem uiMenuItem; 
 		sf::Sound soundGame;

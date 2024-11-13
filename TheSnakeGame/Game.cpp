@@ -35,7 +35,7 @@ namespace SnakeGame
 		gameStruct.snakeClass.InitializedSnake(gameStruct.playerSnake, gameStruct.resources.headTexture, gameStruct.resources.bodyTexture, gameStruct.resources.tailSnakeTexture, gameStruct.resources.turnBodySnakeTexture);
 		gameStruct.playingFiled.InitializingField(gameStruct.resources.classicCellFiledTexture, gameStruct.field);
 		gameStruct.obstacle.Initialization(OBSTACLE_SIZE, gameStruct.resources.obstacleTexture);
-		gameStruct.playingFiled.AddObstacleForField(gameStruct.obstacle, gameStruct.field);
+		gameStruct.playingFiled.AddBorderObstacleForField(gameStruct.obstacle, gameStruct.field);
 		AppleInitialization(gameStruct);
 		gameStruct.background.setSize(sf::Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT));
 		gameStruct.background.setFillColor(sf::Color(31, 31, 31));
@@ -49,7 +49,7 @@ namespace SnakeGame
 		GetUIManager().gameState = GetUIManager().Pause;
 		gameStruct.snakeClass.ReloadSnake(gameStruct.playerSnake);
 		gameStruct.playingFiled.ReloadField(gameStruct.field);
-		gameStruct.playingFiled.AddObstacleForField(gameStruct.obstacle, gameStruct.field);
+		gameStruct.playingFiled.AddBorderObstacleForField(gameStruct.obstacle, gameStruct.field);
 		gameStruct.playingFiled.AddAppleForField(gameStruct.redApple, gameStruct.field);
 		gameStruct.timeSinceGameStart = 0;
 	}
@@ -65,7 +65,7 @@ namespace SnakeGame
 			else
 			{
 				gameStruct.playingFiled.DeleteSnakeBodyForField(gameStruct.playerSnake, gameStruct.field);
-				gameStruct.snakeClass.UpdateSnakeDirection(gameStruct.playerSnake, deltaTime, PAUSE_LENGHT_MOVEMENT / int(GetUIManager().gameSettings.difficultyGame));
+				gameStruct.snakeClass.UpdateSnakeDirection(gameStruct.playerSnake, deltaTime, PAUSE_LENGHT_MOVEMENT / int(GetUIManager().gameSettings.difficultyGame), gameStruct.numberMoveSnake, GetUIManager().gameSettings);
 				switch (gameStruct.field.cellField[gameStruct.playerSnake.front().positionSnake.cellWidth][gameStruct.playerSnake.front().positionSnake.cellHeight].itemType)
 				{
 				case PlayingField::ItemType::Apple:
@@ -75,6 +75,11 @@ namespace SnakeGame
 					gameStruct.playingFiled.AddAppleForField(gameStruct.redApple, gameStruct.field);
 					gameStruct.playingFiled.DeleteAppleForField(gameStruct.playerSnake.front().positionSnake, gameStruct.field);
 					GetUIManager().AddScore();
+					break;
+				case PlayingField::ItemType::ObstacleBorder:
+					gameStruct.playingFiled.UpdateSnakeBodyForField(gameStruct.playerSnake, gameStruct.field);
+					Playback(gameStruct.resources.snakeHit);
+					RestartGame(gameStruct);
 					break;
 				case PlayingField::ItemType::Obstacle:
 					gameStruct.playingFiled.UpdateSnakeBodyForField(gameStruct.playerSnake, gameStruct.field);
@@ -89,6 +94,13 @@ namespace SnakeGame
 				if (gameStruct.field.cellField[gameStruct.playerSnake.front().positionSnake.cellWidth][gameStruct.playerSnake.front().positionSnake.cellHeight].itemType == PlayingField::ItemType::PartSnake) 
 				{
 					RestartGame(gameStruct);
+				}
+
+				if (gameStruct.numberMoveSnake >= NUMBER_MOVES_BEFORE_CHANGING_OBSTACLE)
+				{
+					gameStruct.numberMoveSnake = 0;
+					gameStruct.playingFiled.DeleteObstacleForField(gameStruct.field);
+					gameStruct.playingFiled.AddRandomObstacleForField(gameStruct.obstacle, gameStruct.field, GetUIManager().gameSettings);
 				}
 			}
 
