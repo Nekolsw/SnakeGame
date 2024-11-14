@@ -7,7 +7,7 @@
 namespace SnakeGame
 {
 	struct GameResources {
-		sf::Texture headTexture, bodyTexture, tailSnakeTexture, turnBodySnakeTexture, classicCellFiledTexture, redAppleTexture, obstacleTexture;
+		sf::Texture headTexture, bodyTexture, tailSnakeTexture, turnBodySnakeTexture, classicCellFiledTexture, redAppleTexture, obstacleTexture, portalTexture;
 		sf::SoundBuffer appleEat, playerDeath, menuHover, menuEnter, snakeHit;
 		sf::Font fontText;
 	};

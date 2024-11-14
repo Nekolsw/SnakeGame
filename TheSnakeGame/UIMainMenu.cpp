@@ -84,7 +84,7 @@ namespace SnakeGame
 
 				break;
 			case SnakeGame::UIMainMenu::GameModes:
-				uiMenuItem.uiGameModes.ChoiceGameMode(event, gameSettings, gameResources);
+				uiMenuItem.uiGameModes.ChoiceMenu(event, gameSettings, gameResources);
 				break;
 			case SnakeGame::UIMainMenu::Settings:
 				uiMenuItem.uiSettings.ChoiceSettings(event, gameSettings, gameResources);
@@ -129,7 +129,7 @@ namespace SnakeGame
 				uiTableRecord.DrawTableRecord(window, font, 5);
 				break;
 			case SnakeGame::UIMainMenu::GameModes:
-				uiMenuItem.uiGameModes.DrawGameMode(window);
+				uiMenuItem.uiGameModes.Draw(window);
 				break;
 			case SnakeGame::UIMainMenu::Settings:
 				uiMenuItem.uiSettings.DrawSettings(window);

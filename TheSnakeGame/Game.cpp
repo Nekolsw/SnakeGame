@@ -26,7 +26,7 @@ namespace SnakeGame
 
 	void Game::RunApplication(GameStruct& gameStruct)
 	{
-		gameStruct.backgroundMusic.openFromFile(RESOURCES_PATH + "Clinthammer__Background_Music.wav");
+		gameStruct.backgroundMusic.openFromFile(RESOURCES_PATH + "BackgroundMusic.wav");
 		gameStruct.backgroundMusic.setLoop(true);
 		gameStruct.backgroundMusic.play();
 		GetUIManager().InitializationUIManager();
@@ -35,7 +35,12 @@ namespace SnakeGame
 		gameStruct.snakeClass.InitializedSnake(gameStruct.playerSnake, gameStruct.resources.headTexture, gameStruct.resources.bodyTexture, gameStruct.resources.tailSnakeTexture, gameStruct.resources.turnBodySnakeTexture);
 		gameStruct.playingFiled.InitializingField(gameStruct.resources.classicCellFiledTexture, gameStruct.field);
 		gameStruct.obstacle.Initialization(OBSTACLE_SIZE, gameStruct.resources.obstacleTexture);
+		gameStruct.portal_1.Initialization(PORTAL_SIZE, gameStruct.resources.portalTexture);
+		gameStruct.portal_2.Initialization(PORTAL_SIZE, gameStruct.resources.portalTexture);
+		gameStruct.portal_1.linkPortal = &gameStruct.portal_2;
+		gameStruct.portal_2.linkPortal = &gameStruct.portal_1;
 		gameStruct.playingFiled.AddBorderObstacleForField(gameStruct.obstacle, gameStruct.field);
+		gameStruct.playingFiled.AddPortalForField(gameStruct.portal_1, gameStruct.portal_2, gameStruct.field);
 		AppleInitialization(gameStruct);
 		gameStruct.background.setSize(sf::Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT));
 		gameStruct.background.setFillColor(sf::Color(31, 31, 31));
@@ -51,6 +56,7 @@ namespace SnakeGame
 		gameStruct.playingFiled.ReloadField(gameStruct.field);
 		gameStruct.playingFiled.AddBorderObstacleForField(gameStruct.obstacle, gameStruct.field);
 		gameStruct.playingFiled.AddAppleForField(gameStruct.redApple, gameStruct.field);
+		gameStruct.playingFiled.AddPortalForField(gameStruct.portal_1, gameStruct.portal_2, gameStruct.field);
 		gameStruct.timeSinceGameStart = 0;
 	}
 
@@ -78,13 +84,29 @@ namespace SnakeGame
 					break;
 				case PlayingField::ItemType::ObstacleBorder:
 					gameStruct.playingFiled.UpdateSnakeBodyForField(gameStruct.playerSnake, gameStruct.field);
-					Playback(gameStruct.resources.snakeHit);
+					Playback(gameStruct.resources.playerDeath);
 					RestartGame(gameStruct);
 					break;
 				case PlayingField::ItemType::Obstacle:
 					gameStruct.playingFiled.UpdateSnakeBodyForField(gameStruct.playerSnake, gameStruct.field);
-					Playback(gameStruct.resources.snakeHit);
+					Playback(gameStruct.resources.playerDeath);
 					RestartGame(gameStruct);
+					break;
+				case PlayingField::ItemType::Portal_1:
+					if (GetUIManager().gameSettings.gameMode.isPortalEnable)
+					{
+						gameStruct.playingFiled.SnakeTeleportationIn_1(gameStruct.playerSnake, gameStruct.field);
+						gameStruct.playingFiled.UpdateSnakeBodyForField(gameStruct.playerSnake, gameStruct.field);
+						Playback(gameStruct.resources.snakeHit);
+					}
+					break;
+				case PlayingField::ItemType::Portal_2:
+					if (GetUIManager().gameSettings.gameMode.isPortalEnable)
+					{
+						gameStruct.playingFiled.SnakeTeleportationIn_2(gameStruct.playerSnake, gameStruct.field);
+						gameStruct.playingFiled.UpdateSnakeBodyForField(gameStruct.playerSnake, gameStruct.field);
+						Playback(gameStruct.resources.snakeHit);
+					}
 					break;
 				default:
 					gameStruct.playingFiled.UpdateSnakeBodyForField(gameStruct.playerSnake, gameStruct.field);
@@ -93,6 +115,7 @@ namespace SnakeGame
 
 				if (gameStruct.field.cellField[gameStruct.playerSnake.front().positionSnake.cellWidth][gameStruct.playerSnake.front().positionSnake.cellHeight].itemType == PlayingField::ItemType::PartSnake) 
 				{
+					Playback(gameStruct.resources.playerDeath);
 					RestartGame(gameStruct);
 				}
 
@@ -155,7 +178,7 @@ namespace SnakeGame
 	void Game::DrawGame(GameStruct& gameStruct, sf::RenderWindow& window)
 	{
 		window.draw(gameStruct.background);
-		gameStruct.playingFiled.Draw(window, gameStruct.playerSnake, gameStruct.field);
+		gameStruct.playingFiled.Draw(window, gameStruct.playerSnake, gameStruct.field, GetUIManager().gameSettings);
 		GetUIManager().DrawUI(window);
 	}
 

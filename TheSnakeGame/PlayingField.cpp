@@ -70,6 +70,28 @@ namespace SnakeGame
 		
 	}
 
+	void PlayingField::AddPortalForField(Portal& portal_1, Portal& portal_2, Field& field)
+	{
+		PositionField positionPortal_1, positionPortal_2;
+		do
+		{
+			positionPortal_1 = GetRandomCellInGameScreen({ CELL_FOR_WIDTH, CELL_FOR_HEIGHT });
+		} while (field.cellField[positionPortal_1.cellWidth][positionPortal_1.cellHeight].itemType != ItemType::Null);
+		do
+		{
+			positionPortal_2 = GetRandomCellInGameScreen({ CELL_FOR_WIDTH, CELL_FOR_HEIGHT });
+		} while (field.cellField[positionPortal_2.cellWidth][positionPortal_2.cellHeight].itemType != ItemType::Null);
+
+		portal_1.portalPosition = positionPortal_1;
+		portal_2.portalPosition = positionPortal_2;
+		field.cellField[positionPortal_1.cellWidth][positionPortal_1.cellHeight].portal_1 = &portal_1;
+		field.cellField[positionPortal_2.cellWidth][positionPortal_2.cellHeight].portal_2 = &portal_2;
+		field.cellField[positionPortal_1.cellWidth][positionPortal_1.cellHeight].portal_1->Spawn(field.cellField[positionPortal_1.cellWidth][positionPortal_1.cellHeight].cellPosition);
+		field.cellField[positionPortal_2.cellWidth][positionPortal_2.cellHeight].portal_2->Spawn(field.cellField[positionPortal_2.cellWidth][positionPortal_2.cellHeight].cellPosition);
+		field.cellField[positionPortal_1.cellWidth][positionPortal_1.cellHeight].itemType = ItemType::Portal_1;
+		field.cellField[positionPortal_2.cellWidth][positionPortal_2.cellHeight].itemType = ItemType::Portal_2;
+	}
+
 	void PlayingField::AddRandomObstacleForField(Obstacle& obstacle, Field& field, GameSettings& gameSettings)
 	{
 		PositionField positionObstacle;
@@ -161,6 +183,49 @@ namespace SnakeGame
 		}
 	}
 
+	void PlayingField::SnakeTeleportationIn_1(std::list<PlayerSnake::PartSnake>& partSnake, Field& field)
+	{
+		switch (partSnake.front().snakePartDirection)
+		{
+		case PlayerSnake::SnakeDirection::Left:
+			partSnake.front().positionSnake = { field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_1->linkPortal->portalPosition.cellWidth - 1, field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_1->linkPortal->portalPosition.cellHeight };
+			break;
+		case PlayerSnake::SnakeDirection::Right:
+			partSnake.front().positionSnake = { field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_1->linkPortal->portalPosition.cellWidth + 1, field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_1->linkPortal->portalPosition.cellHeight };
+			break;
+		case PlayerSnake::SnakeDirection::Up:
+			partSnake.front().positionSnake = { field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_1->linkPortal->portalPosition.cellWidth, field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_1->linkPortal->portalPosition.cellHeight - 1 };
+			break;
+		case PlayerSnake::SnakeDirection::Down:
+			partSnake.front().positionSnake = { field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_1->linkPortal->portalPosition.cellWidth, field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_1->linkPortal->portalPosition.cellHeight + 1 };
+			break;
+		default:
+			break;
+		}
+
+	}
+	void PlayingField::SnakeTeleportationIn_2(std::list<PlayerSnake::PartSnake>& partSnake, Field& field)
+	{
+		switch (partSnake.front().snakePartDirection)
+		{
+		case PlayerSnake::SnakeDirection::Left:
+			partSnake.front().positionSnake = { field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_2->linkPortal->portalPosition.cellWidth - 1, field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_2->linkPortal->portalPosition.cellHeight };
+			break;
+		case PlayerSnake::SnakeDirection::Right:
+			partSnake.front().positionSnake = { field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_2->linkPortal->portalPosition.cellWidth + 1, field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_2->linkPortal->portalPosition.cellHeight };
+			break;
+		case PlayerSnake::SnakeDirection::Up:
+			partSnake.front().positionSnake = { field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_2->linkPortal->portalPosition.cellWidth, field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_2->linkPortal->portalPosition.cellHeight - 1 };
+			break;
+		case PlayerSnake::SnakeDirection::Down:
+			partSnake.front().positionSnake = { field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_2->linkPortal->portalPosition.cellWidth, field.cellField[partSnake.front().positionSnake.cellWidth][partSnake.front().positionSnake.cellHeight].portal_2->linkPortal->portalPosition.cellHeight + 1 };
+			break;
+		default:
+			break;
+		}
+			
+			
+	}
 	void PlayingField::DeleteSnakeBodyForField(std::list<PlayerSnake::PartSnake>& partSnake, Field& field)
 	{
 		for (PlayerSnake::PartSnake n : partSnake)
@@ -170,7 +235,7 @@ namespace SnakeGame
 		}
 	}
 
-	void PlayingField::Draw(sf::RenderWindow& window, std::list<PlayerSnake::PartSnake>& partSnake, Field& field)
+	void PlayingField::Draw(sf::RenderWindow& window, std::list<PlayerSnake::PartSnake>& partSnake, Field& field, GameSettings& gameSettings)
 	{
 		for (int i = 0; i < CELL_FOR_WIDTH; ++i)
 		{
@@ -181,15 +246,17 @@ namespace SnakeGame
 				{
 					field.cellField[i][j].apple->Draw(window);
 				}
-			}
-		}
-		for (int i = 0; i < CELL_FOR_WIDTH; ++i)
-		{
-			for (int j = 0; j < CELL_FOR_HEIGHT; ++j)
-			{
 				if (field.cellField[i][j].itemType == ItemType::ObstacleBorder || field.cellField[i][j].itemType == ItemType::Obstacle)
 				{
 					field.cellField[i][j].obstacle.Draw(window);
+				}
+				if (field.cellField[i][j].portal_1 != nullptr && gameSettings.gameMode.isPortalEnable)
+				{
+					field.cellField[i][j].portal_1->Draw(window);
+				}
+				if (field.cellField[i][j].portal_2 != nullptr && gameSettings.gameMode.isPortalEnable)
+				{
+					field.cellField[i][j].portal_2->Draw(window);
 				}
 			}
 		}

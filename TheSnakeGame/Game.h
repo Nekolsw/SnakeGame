@@ -6,6 +6,7 @@
 #include "PlayerSnake.h"
 #include "RedApple.h"
 #include "Obstacle.h"
+#include "Portal.h"
 #include "UIManager.h"
 
 namespace SnakeGame 
@@ -18,6 +19,7 @@ namespace SnakeGame
 			PlayingField playingFiled; 
 			sf::Sound soundGame;
 			RedApple redApple;
+			Portal portal_1, portal_2;
 			Obstacle obstacle;
 			PlayingField::Field field;
 			GameResources resources;
@@ -39,7 +41,6 @@ namespace SnakeGame
 	public:
 		GameStruct gameStruct;
 		UIManager& GetUIManager();
-		void SerializeGame();
 		void Playback(sf::SoundBuffer& buffer);
 		void RunApplication(GameStruct& gameStruct);
 		void RestartGame(GameStruct& gameStruct);

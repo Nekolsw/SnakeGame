@@ -5,8 +5,11 @@ namespace SnakeGame
 	{
 		SetTextScreen(textHeader, "Game mode", 48, sf::Color::Cyan, font, { 650.f, 190.f }, { 0.5f, 0.5f });
 		SetTextScreen(text, "Adding moving obstacles", 24, sf::Color::Green, font, { 495.f, 265.f }, { 0.f, 0.f });
-		SetRectangleShape(checkMoveObstacle, { 20.f, 20.f }, sf::Color(25, 25, 25, 255), { 0.5f, 0.5f }, { 465.f, 270.f }, sf::Color::Cyan, 2.f);
 		listTextGameModeItems.push_back(text);
+		SetTextScreen(text, "Adding portals", 24, sf::Color::Cyan, font, { 495.f, 295.f }, { 0.f, 0.f });
+		listTextGameModeItems.push_back(text);
+		SetRectangleShape(checkMoveObstacle, { 20.f, 20.f }, sf::Color(25, 25, 25, 255), { 0.5f, 0.5f }, { 465.f, 270.f }, sf::Color::Cyan, 2.f);
+		SetRectangleShape(checkPortal, { 20.f, 20.f }, sf::Color(25, 25, 25, 255), { 0.5f, 0.5f }, { 465.f, 300.f }, sf::Color::Cyan, 2.f);
 	
 		beginGameModeItem = GameModeItems::isMoveObstacle;
 		textGameModeIter = listTextGameModeItems.begin();
@@ -20,7 +23,7 @@ namespace SnakeGame
 			soundGame.play();
 		}
 	}
-	bool UIGameModes::ChoiceGameMode(sf::Event& event, GameSettings& gameSettings, GameResources& gameResouces)
+	bool UIGameModes::ChoiceMenu(sf::Event& event, GameSettings& gameSettings, GameResources& gameResouces)
 	{
 		if (event.type == sf::Event::KeyPressed)
 		{
@@ -39,7 +42,7 @@ namespace SnakeGame
 				break;
 
 			case sf::Keyboard::S:
-				if (beginGameModeItem < GameModeItems::isMoveObstacle)
+				if (beginGameModeItem < GameModeItems::isPortalEnable)
 				{
 					Playback(gameResouces.menuHover, gameSettings);
 					++accountGameModeItems;
@@ -55,12 +58,17 @@ namespace SnakeGame
 				{
 				case SnakeGame::UIGameModes::isMoveObstacle:
 					gameSettings.gameMode.isMoveObstacle = !gameSettings.gameMode.isMoveObstacle;
-					break; 
+					break;
+				case SnakeGame::UIGameModes::isPortalEnable :
+					gameSettings.gameMode.isPortalEnable = !gameSettings.gameMode.isPortalEnable;
+					break;
 				default:
 					break;
 				}
 				SetRectangleShape(checkMoveObstacle, { 20.f, 20.f }, (bool)gameSettings.gameMode.isMoveObstacle ? sf::Color::Cyan : sf::Color(25, 25, 25, 255), { 0.5f, 0.5f }, { 465.f, 270.f },
 					(bool)gameSettings.gameMode.isMoveObstacle ? sf::Color(25, 25, 25, 255) : sf::Color::Cyan, 2.f);
+				SetRectangleShape(checkPortal, { 20.f, 20.f }, (bool)gameSettings.gameMode.isPortalEnable ? sf::Color::Cyan : sf::Color(25, 25, 25, 255), { 0.5f, 0.5f }, { 465.f, 300.f },
+					(bool)gameSettings.gameMode.isPortalEnable ? sf::Color(25, 25, 25, 255) : sf::Color::Cyan, 2.f);
 
 			case sf::Keyboard::Escape:
 				return true;
@@ -71,11 +79,12 @@ namespace SnakeGame
 		return false;
 	}
 
-	void UIGameModes::DrawGameMode(sf::RenderWindow& window)
+	void UIGameModes::Draw(sf::RenderWindow& window)
 	{
 			window.draw(gameModeBackground);
-			window.draw(textHeader);
+			window.draw(textHeader); 
 			window.draw(checkMoveObstacle);
+			window.draw(checkPortal);
 			for (std::list <sf::Text>::iterator drawTextMenuIter = listTextGameModeItems.begin(); drawTextMenuIter != listTextGameModeItems.end(); ++drawTextMenuIter)
 			{
 				window.draw(*drawTextMenuIter);

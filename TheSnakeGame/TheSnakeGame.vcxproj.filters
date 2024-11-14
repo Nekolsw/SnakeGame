@@ -94,6 +94,9 @@
     <ClCompile Include="Obstacle.cpp">
       <Filter>Sources\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="Portal.cpp">
+      <Filter>Sources\GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h">
@@ -160,6 +163,9 @@
       <Filter>Sources\Interface\UIConstructor</Filter>
     </ClInclude>
     <ClInclude Include="Obstacle.h">
+      <Filter>Sources\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Portal.h">
       <Filter>Sources\GameObject</Filter>
     </ClInclude>
   </ItemGroup>

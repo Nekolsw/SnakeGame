@@ -18,6 +18,7 @@ namespace SnakeGame
 		struct GameMode 
 		{
 			bool isMoveObstacle = false;
+			bool isPortalEnable = false;
 		};
 
 		DifficultyGame difficultyGame = DifficultyGame::Easy;

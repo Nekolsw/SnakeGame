@@ -12,14 +12,15 @@ namespace SnakeGame
 		assert(resources.classicCellFiledTexture.loadFromFile(RESOURCES_PATH + "ClassicCellFiled.png"));
 		assert(resources.redAppleTexture.loadFromFile(RESOURCES_PATH + "GreenApple.png"));
 		assert(resources.obstacleTexture.loadFromFile(RESOURCES_PATH + "Obstacle.png"));
+		assert(resources.portalTexture.loadFromFile(RESOURCES_PATH + "Portal.png"));
 		
 
 		//Load font
 		assert(resources.fontText.loadFromFile(RESOURCES_PATH + "Fonts/Roboto-Bold.ttf"));
 
 		//Load sound
-		assert(resources.snakeHit.loadFromFile(RESOURCES_PATH + "Owlstorm__Snake_hit.wav"));
-		assert(resources.playerDeath.loadFromFile(RESOURCES_PATH + "Maodin204__Lose.wav"));
+		assert(resources.snakeHit.loadFromFile(RESOURCES_PATH + "ClapApple.wav"));
+		assert(resources.playerDeath.loadFromFile(RESOURCES_PATH + "GameOverSound.wav"));
 		assert(resources.menuHover.loadFromFile(RESOURCES_PATH + "Theevilsocks__menu-hover.wav"));
 		assert(resources.menuEnter.loadFromFile(RESOURCES_PATH + "Timgormly__Enter.wav"));
 	}

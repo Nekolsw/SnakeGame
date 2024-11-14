@@ -172,24 +172,24 @@ namespace SnakeGame {
 
 	void PlayerSnake::UpdateSnakeDirection(std::list <PartSnake>& headSnake, float &deltaTime, float snakeSpeed, int& numberMoveSnake, GameSettings& gameSettings)
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) && headSnake.front().snakePartDirection != SnakeDirection::Left && isDirectionSelect == false)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && headSnake.front().snakePartDirection != SnakeDirection::Left && !isDirectionSelect)
 		{
 			headSnake.front().snakePartDirection = SnakeDirection::Right;
 			isDirectionSelect = true;
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A) && headSnake.front().snakePartDirection != SnakeDirection::Right && isDirectionSelect == false)
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && headSnake.front().snakePartDirection != SnakeDirection::Right && !isDirectionSelect)
 		{
 			headSnake.front().snakePartDirection = SnakeDirection::Left;
 			isDirectionSelect = true;
 		}
 
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W) && headSnake.front().snakePartDirection != SnakeDirection::Down && isDirectionSelect == false)
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && headSnake.front().snakePartDirection != SnakeDirection::Down && !isDirectionSelect)
 		{
 			headSnake.front().snakePartDirection = SnakeDirection::Up;
 			isDirectionSelect = true;
 		}
 
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S) && headSnake.front().snakePartDirection != SnakeDirection::Up && isDirectionSelect == false)
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && headSnake.front().snakePartDirection != SnakeDirection::Up && !isDirectionSelect)
 		{
 			headSnake.front().snakePartDirection = SnakeDirection::Down;
 			isDirectionSelect = true;

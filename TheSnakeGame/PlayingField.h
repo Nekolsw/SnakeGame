@@ -5,6 +5,7 @@
 #include "Constants.h"
 #include "Apple.h"
 #include "Obstacle.h"
+#include "Portal.h"
 #include "PlayerSnake.h"
 #include "GameSettings.h"
 
@@ -18,17 +19,19 @@ namespace SnakeGame
 			Apple = 1,
 			Obstacle,
 			ObstacleBorder,
+			Portal_1,
+			Portal_2,
 			HeadSnake,
 			PartSnake,
 			Null
 		};
 	private:
 		sf::Texture cellTexture;
-
 		struct CellField 
 		{
 			Position2D cellPosition;
-			Apple* apple = nullptr;
+			Apple* apple = nullptr; 
+			Portal* portal_1 = nullptr, *portal_2 = nullptr;
 			Obstacle obstacle;
 			PlayerSnake::PartSnake bodySnake;
 			sf::Sprite spriteCell;
@@ -55,13 +58,16 @@ namespace SnakeGame
 		void InitializingField(sf::Texture gameTextureCell, Field& field);
 		void ReloadField(Field& field);
 		void AddAppleForField(Apple& apple, Field& field);
+		void AddPortalForField(Portal& portal_1, Portal& portal_2, Field& field);
 		void AddRandomObstacleForField(Obstacle& obstacle, Field& field, GameSettings& gameSettings);
 		void AddBorderObstacleForField(Obstacle& obstacle, Field& field);
 		void DeleteObstacleForField(Field& field);
 		void DeleteAppleForField(PositionField positionField, Field& field);
 		void UpdateSnakeBodyForField(std::list<PlayerSnake::PartSnake>& partSnake, Field& field);
+		void SnakeTeleportationIn_1(std::list<PlayerSnake::PartSnake>& partSnake, Field& field);
+		void SnakeTeleportationIn_2(std::list<PlayerSnake::PartSnake>& partSnake, Field& field);
 		void DeleteSnakeBodyForField(std::list<PlayerSnake::PartSnake>& partSnake, Field& field);
-		void Draw(sf::RenderWindow& window, std::list<PlayerSnake::PartSnake>& partSnake, Field& field);
+		void Draw(sf::RenderWindow& window, std::list<PlayerSnake::PartSnake>& partSnake, Field& field, GameSettings& gameSettings);
 		
 
 	};

@@ -10,6 +10,7 @@ namespace SnakeGame
 	const int APPLE_SIZE = 50;
 	const int OBSTACLE_SIZE = 80;
 	const int SNAKE_SIZE = 80;
+	const int PORTAL_SIZE = 80;
 	const int TEXT_SCORE_SIZE = 46;
 	const int FIELD_OFFSET_WIDTH = 40;
 	const int FIELD_OFFSET_HEIGHT = 120;

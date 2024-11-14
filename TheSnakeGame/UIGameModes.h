@@ -9,16 +9,17 @@ namespace SnakeGame
 	{
 		sf::Sound soundGame;
 		sf::Text textHeader, text;
-		sf::RectangleShape gameModeBackground, checkMoveObstacle;
+		sf::RectangleShape gameModeBackground, checkMoveObstacle, checkPortal;
 	public:
 		enum GameModeItems
 		{
 			isMoveObstacle = 0,
+			isPortalEnable
 		};
 		void InitializedMainMenu(sf::Font& font);
 		void Playback(sf::SoundBuffer& buffer, GameSettings& gameSettings);
-		bool ChoiceGameMode(sf::Event& event, GameSettings& gameSettings, GameResources& gameResouces);
-		void DrawGameMode(sf::RenderWindow& window);
+		bool ChoiceMenu(sf::Event& event, GameSettings& gameSettings, GameResources& gameResouces);
+		void Draw(sf::RenderWindow& window);
 	private:
 		int accountGameModeItems = 0;
 		GameModeItems beginGameModeItem;

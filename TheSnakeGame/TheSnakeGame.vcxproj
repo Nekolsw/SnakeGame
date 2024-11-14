@@ -160,6 +160,7 @@
   <ItemGroup>
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="Portal.cpp" />
     <ClCompile Include="UIDifficultyLevel.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMain.cpp" />
@@ -182,6 +183,7 @@
   <ItemGroup>
     <ClInclude Include="Apple.h" />
     <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="Portal.h" />
     <ClInclude Include="UIDifficultyLevel.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Constants.h" />
